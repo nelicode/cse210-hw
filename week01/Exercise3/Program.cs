@@ -4,35 +4,47 @@ class Program
 {
     static void Main(string[] args)
     {
-        // For Parts 1 and 2, where the user specified the number...
-        // Console.Write("What is the magic number? ");
-        // int magicNumber = int.Parse(Console.ReadLine());
-        
-        // For Part 3, where we use a random number
-        Random randomGenerator = new Random();
-        int magicNumber = randomGenerator.Next(1, 101);
+        string playAgain = "yes";
 
-        int guess = -1;
-
-        // We could also use a do-while loop here...
-        while (guess != magicNumber)
+        while (playAgain == "yes")
         {
-            Console.Write("What is your guess? ");
-            guess = int.Parse(Console.ReadLine());
+            Random randomGenerator = new Random();
+            int magicNumber = randomGenerator.Next(1, 101);
 
-            if (magicNumber > guess)
+            int guess = -1;
+            int attempts = 0;
+
+            Console.WriteLine("Welcome to the Magic Number Game!");
+
+            while (guess != magicNumber)
             {
-                Console.WriteLine("Higher");
-            }
-            else if (magicNumber < guess)
-            {
-                Console.WriteLine("Lower");
-            }
-            else
-            {
-                Console.WriteLine("You guessed it!");
+                Console.Write("What is your guess? ");
+
+                string userInput = Console.ReadLine();
+                guess = int.Parse(userInput);
+
+                attempts++;
+
+                if (guess < magicNumber)
+                {
+                    Console.WriteLine("Higher");
+                }
+                else if (guess > magicNumber)
+                {
+                    Console.WriteLine("Lower");
+                }
+                else
+                {
+                    Console.WriteLine("You guessed it!");
+                }
             }
 
-        }                    
+            Console.WriteLine($"You guessed the number in {attempts} attempts.");
+
+            Console.Write("Do you want to play again? (yes/no): ");
+            playAgain = Console.ReadLine();
+        }
+
+        Console.WriteLine("Thanks for playing!");
     }
 }
