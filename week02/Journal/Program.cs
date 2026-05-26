@@ -28,7 +28,7 @@ class Program
             string prompt = promptGenerator.GetRandomPrompt();
 
             Console.WriteLine();
-            Console.WriteLine("Take your time and keep writing :)");
+            Console.WriteLine("Take your time and keep writing ");
             Console.WriteLine();
 
             Console.WriteLine(prompt);
@@ -37,7 +37,7 @@ class Program
             string answer = Console.ReadLine();
 
             Console.WriteLine();
-            Console.WriteLine("Amazing! Keep expressing your thoughts :)");
+            Console.WriteLine("Amazing! Keep expressing your thoughts ");
             Console.WriteLine();
 
             DateTime currentTime = DateTime.Now;
