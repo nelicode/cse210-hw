@@ -24,24 +24,35 @@ class Program
             choice = int.Parse(Console.ReadLine());
 
             if (choice == 1)
-            {
-                string prompt = promptGenerator.GetRandomPrompt();
+        {
+            string prompt = promptGenerator.GetRandomPrompt();
 
-                Console.WriteLine(prompt);
-                Console.Write("> ");
+            Console.WriteLine();
+            Console.WriteLine("Take your time and keep writing :)");
+            Console.WriteLine();
 
-                string answer = Console.ReadLine();
+            Console.WriteLine(prompt);
+            Console.Write("> ");
 
-                DateTime currentTime = DateTime.Now;
+            string answer = Console.ReadLine();
 
-                Entry entry = new Entry();
+            Console.WriteLine();
+            Console.WriteLine("Amazing! Keep expressing your thoughts :)");
+            Console.WriteLine();
 
-                entry._date = currentTime.ToShortDateString();
-                entry._promptText = prompt;
-                entry._entryText = answer;
+            DateTime currentTime = DateTime.Now;
 
-                journal.AddEntry(entry);
-            }
+            Entry entry = new Entry();
+
+            entry._date = currentTime.ToShortDateString();
+            entry._promptText = prompt;
+            entry._entryText = answer;
+
+            journal.AddEntry(entry);
+
+            Console.WriteLine("Thank you for sharing your experience today. You did excellent 🌟");
+            Console.WriteLine();
+        }
 
             else if (choice == 2)
             {
