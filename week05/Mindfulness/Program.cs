@@ -2,16 +2,15 @@ using System;
 /*
 Creativity Beyond Requirements
 
-I added a few extra features to improve the program:
+To improve my program beyond the basic requirements, I added a few extra features.
 
-1. The program keeps track of how many activities the user has completed
-   during the session and displays that number in the menu.
+First, I added a counter that keeps track of how many activities the user completes during the session and displays that information in the menu.
 
-2. Every completed activity is saved in a file called
-   mindfulness_log.txt so the user can see a history of their practice.
+Second, I created a log file called "mindfulness_log.txt" where completed activities are saved. 
+This allows the user to keep a record of their mindfulness practice.
 
-3. Reflection questions are not repeated until all questions have been used,
-   making the activity more interesting and meaningful.
+Third, in the Reflection Activity, I made sure that reflection questions do not repeat until all available questions have been used.
+I felt this would make the activity more meaningful and less repetitive for the user.
 */
 class Program
 {
