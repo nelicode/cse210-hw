@@ -1,5 +1,18 @@
 using System;
+/*
+Creativity Beyond Requirements
 
+I added a few extra features to improve the program:
+
+1. The program keeps track of how many activities the user has completed
+   during the session and displays that number in the menu.
+
+2. Every completed activity is saved in a file called
+   mindfulness_log.txt so the user can see a history of their practice.
+
+3. Reflection questions are not repeated until all questions have been used,
+   making the activity more interesting and meaningful.
+*/
 class Program
 {
     private static int _activitiesCompleted = 0;
