@@ -1,10 +1,27 @@
 using System;
+
+/*
+Creativity Beyond Requirements
+
+For this project, I added a few extra features to make the program more meaningful and encouraging for the user.
+
+1. I personalized many of the messages so the program feels warm, friendly, and motivating while working toward goals.
+
+2. The current score is displayed in the menu, making it easy to track progress at any time.
+
+3. Goals and score can be saved and loaded, allowing the user to continue their progress across different sessions.
+
+4. Checklist goals keep track of progress and provide bonus points when completed, creating an additional sense of achievement.
+
+These additions help make the Eternal Quest experience more enjoyable while still following the principles of abstraction, encapsulation,
+inheritance, and polymorphism.
+*/
+
 class Program
 {
     static void Main(string[] args)
     {
-        GoalManager manager =
-            new GoalManager();
+        GoalManager manager = new GoalManager();
 
         string choice = "";
 
@@ -13,7 +30,7 @@ class Program
             Console.Clear();
 
             Console.WriteLine("Eternal Quest");
-            Console.WriteLine("══════════════════════════════");
+            Console.WriteLine("------------------------------");
 
             manager.DisplayScore();
 
@@ -27,7 +44,7 @@ class Program
             Console.WriteLine("6. Exit");
 
             Console.WriteLine();
-            Console.Write("✨ Please select an option: ");
+            Console.Write("Please select an option: ");
 
             choice = Console.ReadLine();
 

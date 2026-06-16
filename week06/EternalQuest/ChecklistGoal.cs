@@ -17,6 +17,11 @@ public class ChecklistGoal : Goal
         _amountCompleted = 0;
     }
 
+    public void SetAmountCompleted(int amount)
+    {
+        _amountCompleted = amount;
+    }
+
     public override int RecordEvent()
     {
         if (_amountCompleted >= _target)

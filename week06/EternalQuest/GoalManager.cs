@@ -184,11 +184,16 @@ public class GoalManager
 
             if (goalType == "SimpleGoal")
             {
-                _goals.Add(
+                SimpleGoal goal =
                     new SimpleGoal(
                         data[0],
                         data[1],
-                        int.Parse(data[2])));
+                        int.Parse(data[2]));
+
+                goal.SetCompleted(
+                    bool.Parse(data[3]));
+
+                _goals.Add(goal);
             }
 
             else if (goalType == "EternalGoal")
@@ -200,15 +205,20 @@ public class GoalManager
                         int.Parse(data[2])));
             }
 
-            else if (goalType == "ChecklistGoal")
+           else if (goalType == "ChecklistGoal")
             {
-                _goals.Add(
+                ChecklistGoal goal =
                     new ChecklistGoal(
                         data[0],
                         data[1],
                         int.Parse(data[2]),
                         int.Parse(data[4]),
-                        int.Parse(data[5])));
+                        int.Parse(data[5]));
+
+                goal.SetAmountCompleted(
+                    int.Parse(data[3]));
+
+                _goals.Add(goal);
             }
         }
 
