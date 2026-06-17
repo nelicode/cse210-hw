@@ -5,47 +5,51 @@ class Program
 {
     static void Main(string[] args)
     {
-        // I created a list of type Activity to store all the activities.
-        // I used the base class Activity to demonstrate polymorphism because
-        // this list can store objects from Running, Cycling, and Swimming.
+        // I created a list of Activity to store different types
+        // of exercises. This demonstrates polymorphism because
+        // the list can contain Running, Cycling, and Swimming objects.
         List<Activity> activities = new List<Activity>();
 
 
-        // I created a Running object that inherits from the Activity class.
-        // This class uses the distance to calculate the speed and pace.
-        activities.Add(
-            new Running(
-                new DateTime(2022, 11, 3),
-                30,
-                4.8));
+        // I created a Running activity.
+        // Running inherits the common information from Activity
+        // and uses distance to calculate speed and pace.
+        Running running = new Running(
+            new DateTime(2022, 11, 3),
+            30,
+            4.8);
 
 
-        // I created a Cycling object that inherits from the Activity class.
-        // This class uses the speed to calculate the distance and pace.
-        activities.Add(
-            new Cycling(
-                new DateTime(2022, 11, 3),
-                30,
-                20));
+        // I created a Cycling activity.
+        // Cycling inherits from Activity and uses speed
+        // to calculate distance and pace.
+        Cycling cycling = new Cycling(
+            new DateTime(2022, 11, 3),
+            30,
+            20);
 
 
-        // I created a Swimming object that inherits from the Activity class.
-        // This class uses the number of laps to calculate the distance,
-        // speed, and pace of the activity.
-        activities.Add(
-            new Swimming(
-                new DateTime(2022, 11, 3),
-                30,
-                40));
+        // I created a Swimming activity.
+        // Swimming inherits from Activity and uses laps
+        // to calculate distance, speed, and pace.
+        Swimming swimming = new Swimming(
+            new DateTime(2022, 11, 3),
+            30,
+            40);
 
 
-        // I loop through the list of activities to display the information
-        // for each one. Although all objects are stored as Activity,
-        // each class uses its own overridden methods through polymorphism.
+        // I added all activities to the same Activity list.
+        activities.Add(running);
+        activities.Add(cycling);
+        activities.Add(swimming);
+
+
+
+        // I loop through the list and call GetSummary().
+        // Each object uses its own overridden methods
+        // because of polymorphism.
         foreach (Activity activity in activities)
         {
-            // GetSummary() uses the calculations from each derived class
-            // to display the correct distance, speed, and pace.
             Console.WriteLine(activity.GetSummary());
         }
     }
