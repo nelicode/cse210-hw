@@ -7,12 +7,48 @@ public class GoalManager
     private List<Goal> _goals = new List<Goal>();
     private int _score;
 
+    private int _level = 1;
+    private List<string> _badges = new List<string>();
+
     public void DisplayScore()
+{
+    Console.WriteLine("--------------------------------");
+    Console.WriteLine($"Score: {_score}");
+    Console.WriteLine($"Level: {_level}");
+    Console.WriteLine();
+
+    if (_badges.Count > 0)
     {
-        Console.WriteLine();
-        Console.WriteLine($"You currently have {_score} points on your Eternal Quest journey.");
-        Console.WriteLine();
+        Console.WriteLine("Badges Earned:");
+
+        foreach (string badge in _badges)
+        {
+            if (badge == "First Achievement")
+            {
+                Console.WriteLine("🏆 First Achievement");
+            }
+            else if (badge == "Goal Master")
+            {
+                Console.WriteLine("⭐ Goal Master");
+            }
+            else if (badge == "Legend")
+            {
+                Console.WriteLine("👑 Legend");
+            }
+            else
+            {
+                Console.WriteLine($"• {badge}");
+            }
+        }
     }
+    else
+    {
+        Console.WriteLine("No badges earned yet.");
+    }
+
+    Console.WriteLine("--------------------------------");
+    Console.WriteLine();
+}
 
     public void ListGoals()
     {
@@ -32,7 +68,60 @@ public class GoalManager
             Console.WriteLine($"{i + 1}. {_goals[i].GetDetailsString()}");
         }
     }
+    private void CheckLevelUp()
+{
+    int newLevel = (_score / 1000) + 1;
 
+    if (newLevel > _level)
+    {
+        _level = newLevel;
+
+        Console.WriteLine();
+        Console.WriteLine("************************************************");
+        Console.WriteLine($"LEVEL UP! You reached Level {_level}!");
+        Console.WriteLine("************************************************");
+    }
+}
+
+    private void CheckBadges()
+{
+    int completedGoals = 0;
+
+    foreach (Goal goal in _goals)
+    {
+        if (goal.IsComplete())
+        {
+            completedGoals++;
+        }
+    }
+
+    if (completedGoals >= 1 &&
+        !_badges.Contains("First Achievement"))
+    {
+        _badges.Add("First Achievement");
+
+        Console.WriteLine();
+        Console.WriteLine("Badge Unlocked: First Achievement");
+    }
+
+    if (completedGoals >= 5 &&
+        !_badges.Contains("Goal Master"))
+    {
+        _badges.Add("Goal Master");
+
+        Console.WriteLine();
+        Console.WriteLine("Badge Unlocked: Goal Master");
+    }
+
+    if (_score >= 5000 &&
+        !_badges.Contains("Legend"))
+    {
+        _badges.Add("Legend");
+
+        Console.WriteLine();
+        Console.WriteLine("Badge Unlocked: Legend");
+    }
+}
     public void CreateGoal()
     {
         Console.WriteLine();
@@ -117,6 +206,9 @@ public class GoalManager
 
         _score += pointsEarned;
 
+        CheckLevelUp();
+        CheckBadges();
+
         Console.WriteLine();
 
         if (pointsEarned > 0)
@@ -142,6 +234,8 @@ public class GoalManager
                new StreamWriter(filename))
         {
             output.WriteLine(_score);
+            output.WriteLine(_level);
+            output.WriteLine(string.Join("|", _badges));
 
             foreach (Goal goal in _goals)
             {
@@ -173,8 +267,16 @@ public class GoalManager
         _goals.Clear();
 
         _score = int.Parse(lines[0]);
+        _level = int.Parse(lines[1]);
 
-        for (int i = 1; i < lines.Length; i++)
+        _badges.Clear();
+
+        if (lines[2] != "")
+        {
+            _badges.AddRange(lines[2].Split('|'));
+        }
+
+        for (int i = 3; i < lines.Length; i++)
         {
             string[] parts = lines[i].Split(":");
 

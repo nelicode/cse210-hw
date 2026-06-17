@@ -3,18 +3,17 @@ using System;
 /*
 Creativity Beyond Requirements
 
-For this project, I added a few extra features to make the program more meaningful and encouraging for the user.
+For this project, I added several features beyond the core requirements to make the Eternal Quest program more engaging, motivating, and rewarding for users.
 
-1. I personalized many of the messages so the program feels warm, friendly, and motivating while working toward goals.
+I personalized many of the messages throughout the program so the experience feels warm, encouraging, and supportive while users work toward their goals.
+The current score is displayed directly in the menu, allowing users to easily monitor their progress at any time.
+Goals and scores can be saved and loaded from a file, enabling users to continue their progress across multiple sessions.
+Checklist goals track completion progress and award bonus points when the target number of completions is reached, creating an additional sense of accomplishment.
+I implemented a Level System where users automatically gain a new level every 1000 points earned. This adds long-term progression and encourages continued participation.
+I added Achievement Badges that unlock when users reach important milestones, such as completing goals or earning a large number of points. These badges provide additional motivation and a sense of achievement.
+Levels and badges are also saved and loaded with the rest of the user's data so that all progress persists between sessions.
 
-2. The current score is displayed in the menu, making it easy to track progress at any time.
-
-3. Goals and score can be saved and loaded, allowing the user to continue their progress across different sessions.
-
-4. Checklist goals keep track of progress and provide bonus points when completed, creating an additional sense of achievement.
-
-These additions help make the Eternal Quest experience more enjoyable while still following the principles of abstraction, encapsulation,
-inheritance, and polymorphism.
+These enhancements introduce gamification elements that make the program more interactive and enjoyable while further demonstrating the use of abstraction, encapsulation, inheritance, polymorphism, file persistence, and object-oriented design principles.
 */
 
 class Program
